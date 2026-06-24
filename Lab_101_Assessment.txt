@@ -1,0 +1,107 @@
+=============================================================================
+LAB 101: LINUX HARDENING FOR SOC ANALYSTS - PRACTICAL ASSESSMENT
+=============================================================================
+Course: Blue Team SOC Foundations
+Module: Automated Log Hardening & Service Reduction
+Date: June 24, 2026
+Student Name: ______________________
+=============================================================================
+
+INSTRUCTIONS:
+- Answer all questions to the best of your ability.
+- For "Select All That Apply," choose every correct option.
+- For Short Answer, be concise and technical.
+
+-----------------------------------------------------------------------------
+SECTION 1: MULTIPLE CHOICE (Single Answer)
+-----------------------------------------------------------------------------
+
+1. Why is the "Bash Strict Mode" (set -euo pipefail) recommended for 
+   security automation scripts?
+
+   A. It makes the script run faster by skipping unnecessary checks.
+   B. It prevents the script from continuing silently if a command fails.
+   C. It automatically fixes syntax errors without user intervention.
+   D. It allows the script to run without root privileges.
+
+2. In the context of the `systemctl` command pipeline, what was the 
+   specific purpose of adding `|| true` to the end of the command?
+
+   A. To ensure the script continues even if the command returns a non-zero exit code.
+   B. To force the command to return a list of all services, including disabled ones.
+   C. To enable the strict mode for that specific line only.
+   D. To log the output of the command to /var/log/syslog automatically.
+
+3. Which of the following best describes the security benefit of disabling 
+   the `cups` (printing) and `bluetooth` services on a SOC analyst's laptop?
+
+   A. It frees up RAM for running virtual machines.
+   B. It prevents the system from connecting to WiFi networks.
+   C. It reduces the attack surface by removing unnecessary network listeners.
+   D. It encrypts the hard drive automatically.
+
+4. When configuring UFW (Uncomplicated Firewall), why is the order of 
+   operations critical when enabling the firewall?
+
+   A. You must enable the firewall before adding rules to ensure they stick.
+   B. You must add "Allow" rules for essential services (like SSH) BEFORE enabling.
+   C. The order does not matter; UFW automatically allows established connections.
+   D. You must reset the firewall after enabling it to apply default policies.
+
+-----------------------------------------------------------------------------
+SECTION 2: SELECT ALL THAT APPLY
+-----------------------------------------------------------------------------
+
+5. You are reviewing a hardening script for a production Ubuntu server. 
+   Which of the following services should typically be INCLUDED in the 
+   "Allowed Whitelist" to ensure system stability and security monitoring? 
+   (Select THREE)
+
+   [ ] A. cups (Printing Service)
+   [ ] B. ssh (Secure Shell)
+   [ ] C. bluetooth (Wireless Peripheral Protocol)
+   [ ] D. rsyslog (System Logging)
+   [ ] E. apparmor (Application Armor Security Module)
+   [ ] F. telnet (Unencrypted Remote Access)
+
+6. Which of the following are valid reasons for using a dedicated audit log 
+   file (e.g., /var/log/hardening_audit.log) in your hardening script? 
+   (Select TWO)
+
+   [ ] A. To provide an immutable record of changes for forensic analysis.
+   [ ] B. To make the script run faster by bypassing system syslog.
+   [ ] C. To comply with CIS Benchmark requirements for change tracking.
+   [ ] D. To automatically reverse changes if the script fails.
+
+-----------------------------------------------------------------------------
+SECTION 3: SHORT ANSWER & SCENARIO
+-----------------------------------------------------------------------------
+
+7. SCENARIO: You executed your hardening script, but the terminal window 
+   closed immediately with no output, and a "processes still running" 
+   warning appeared when you tried to close it manually. 
+   
+   Question: Based on our lab debugging, what likely caused the silent 
+   exit, and what specific bash feature was responsible?
+   
+   Answer: __________________________________________________________________
+   ____________________________________________________________________________
+
+8. Explain the concept of "Attack Surface Reduction" in your own words. 
+   How does disabling the `ModemManager` service on a desktop workstation 
+   contribute to this concept?
+   
+   Answer: __________________________________________________________________
+   ____________________________________________________________________________
+
+9. CRITICAL THINKING: If you ran `ufw --force enable` as the first line 
+   of your firewall function (before adding any allow rules), and your 
+   default policy is set to "deny incoming," what would be the immediate 
+   impact on your ability to manage the server remotely via SSH?
+   
+   Answer: __________________________________________________________________
+   ____________________________________________________________________________
+
+=============================================================================
+END OF ASSESSMENT
+=============================================================================   
