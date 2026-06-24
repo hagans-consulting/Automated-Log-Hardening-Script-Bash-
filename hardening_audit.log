@@ -1,0 +1,219 @@
+~$ sudo ./harden_ubuntu.sh
+
+DEBUG: Found services: accounts-daemon
+anacron
+apparmor
+apport
+avahi-daemon
+bluetooth
+cloud-config
+cloud-final
+cloud-init-local
+cloud-init-main
+cloud-init-network
+console-setup
+cron
+cups-browsed
+cups
+dmesg
+e2scrub_reap
+getty@
+gpu-manager
+grub-initrd-fallback
+grub2-common
+kdump-tools
+keyboard-setup
+ModemManager
+netplan-configure
+networkd-dispatcher
+NetworkManager-dispatcher
+NetworkManager-wait-online
+NetworkManager
+openvpn
+power-profiles-daemon
+rsyslog
+secureboot-db
+setvtrgb
+snapd.apparmor
+snapd.autoimport
+snapd.core-fixup
+snapd.recovery-chooser-trigger
+snapd.seeded
+snapd
+snapd.system-shutdown
+ssl-cert
+sssd
+switcheroo-control
+sysstat
+systemd-oomd
+systemd-pstore
+systemd-resolved
+systemd-timesyncd
+thermald
+ua-reboot-cmds
+ubuntu-advantage
+udisks2
+ufw
+unattended-upgrades
+wpa_supplicant
+
+56
+Found non-essential service: anacron
+Found non-essential service: apport
+Found non-essential service: bluetooth
+Found non-essential service: cloud-config
+Found non-essential service: cloud-final
+Found non-essential service: cloud-init-local
+Found non-essential service: cloud-init-main
+Found non-essential service: cloud-init-network
+Found non-essential service: console-setup
+Found non-essential service: cups-browsed
+Found non-essential service: cups
+Found non-essential service: dmesg
+Found non-essential service: e2scrub_reap
+Found non-essential service: getty@
+Found non-essential service: gpu-manager
+Found non-essential service: grub-initrd-fallback
+Found non-essential service: grub2-common
+Found non-essential service: kdump-tools
+Found non-essential service: keyboard-setup
+Found non-essential service: ModemManager
+Found non-essential service: netplan-configure
+Found non-essential service: networkd-dispatcher
+Found non-essential service: NetworkManager-dispatcher
+Found non-essential service: NetworkManager-wait-online
+Found non-essential service: openvpn
+Found non-essential service: secureboot-db
+Found non-essential service: setvtrgb
+Found non-essential service: snapd.apparmor
+Found non-essential service: snapd.autoimport
+Found non-essential service: snapd.core-fixup
+Found non-essential service: snapd.recovery-chooser-trigger
+Found non-essential service: snapd.seeded
+Found non-essential service: snapd.system-shutdown
+Found non-essential service: ssl-cert
+Found non-essential service: sssd
+Found non-essential service: switcheroo-control
+Found non-essential service: sysstat
+Found non-essential service: systemd-oomd
+Found non-essential service: systemd-pstore
+Found non-essential service: systemd-timesyncd
+Found non-essential service: ua-reboot-cmds
+Found non-essential service: ubuntu-advantage
+Ready to enable UFW. SSH is allowed.
+Hardening complete. Check /var/log/hardening_audit.log for details.
+
+~$ cat /var/log/hardening_audit.log
+2026-06-24 07:49:29 - Script execution started.
+2026-06-24 07:49:29 - Starting Service Hardening...
+2026-06-24 07:49:30 - FLAGGED for disable: UNIT
+2026-06-24 07:49:30 - FLAGGED for disable: accounts-daemon
+2026-06-24 07:49:30 - FLAGGED for disable: anacron
+2026-06-24 07:49:30 - FLAGGED for disable: apparmor
+2026-06-24 07:49:31 - FLAGGED for disable: apport
+2026-06-24 07:49:31 - FLAGGED for disable: avahi-daemon
+2026-06-24 07:49:31 - FLAGGED for disable: bluetooth
+2026-06-24 07:49:31 - FLAGGED for disable: cloud-config
+2026-06-24 07:49:31 - FLAGGED for disable: cloud-final
+2026-06-24 07:49:31 - FLAGGED for disable: cloud-init-local
+2026-06-24 07:49:31 - FLAGGED for disable: cloud-init-main
+2026-06-24 07:49:31 - FLAGGED for disable: cloud-init-network
+2026-06-24 07:49:31 - FLAGGED for disable: console-setup
+2026-06-24 07:49:31 - FLAGGED for disable: cups-browsed
+2026-06-24 07:49:31 - FLAGGED for disable: cups
+2026-06-24 07:49:31 - FLAGGED for disable: dmesg
+2026-06-24 07:49:31 - FLAGGED for disable: e2scrub_reap
+2026-06-24 07:49:31 - FLAGGED for disable: getty@
+2026-06-24 07:49:31 - FLAGGED for disable: gpu-manager
+2026-06-24 07:49:31 - FLAGGED for disable: grub-initrd-fallback
+2026-06-24 07:49:31 - FLAGGED for disable: grub2-common
+2026-06-24 07:49:31 - FLAGGED for disable: kdump-tools
+2026-06-24 07:49:31 - FLAGGED for disable: keyboard-setup
+2026-06-24 07:49:31 - FLAGGED for disable: ModemManager
+2026-06-24 07:49:31 - FLAGGED for disable: netplan-configure
+2026-06-24 07:49:31 - FLAGGED for disable: networkd-dispatcher
+2026-06-24 07:49:31 - FLAGGED for disable: NetworkManager-dispatcher
+2026-06-24 07:49:31 - FLAGGED for disable: NetworkManager-wait-online
+2026-06-24 07:49:31 - FLAGGED for disable: NetworkManager
+2026-06-24 07:49:31 - FLAGGED for disable: openvpn
+2026-06-24 07:49:31 - FLAGGED for disable: power-profiles-daemon
+2026-06-24 07:49:31 - FLAGGED for disable: rsyslog
+2026-06-24 07:49:31 - FLAGGED for disable: secureboot-db
+2026-06-24 07:49:31 - FLAGGED for disable: setvtrgb
+2026-06-24 07:49:31 - FLAGGED for disable: snapd.apparmor
+2026-06-24 07:49:31 - FLAGGED for disable: snapd.autoimport
+2026-06-24 07:49:31 - FLAGGED for disable: snapd.core-fixup
+2026-06-24 07:49:31 - FLAGGED for disable: snapd.recovery-chooser-trigger
+2026-06-24 07:49:31 - FLAGGED for disable: snapd.seeded
+2026-06-24 07:49:31 - FLAGGED for disable: snapd
+2026-06-24 07:49:32 - FLAGGED for disable: snapd.system-shutdown
+2026-06-24 07:49:32 - FLAGGED for disable: ssl-cert
+2026-06-24 07:49:32 - FLAGGED for disable: sssd
+2026-06-24 07:49:32 - FLAGGED for disable: switcheroo-control
+2026-06-24 07:49:32 - FLAGGED for disable: sysstat
+2026-06-24 07:49:32 - FLAGGED for disable: systemd-oomd
+2026-06-24 07:49:32 - FLAGGED for disable: systemd-pstore
+2026-06-24 07:49:32 - FLAGGED for disable: systemd-timesyncd
+2026-06-24 07:49:32 - FLAGGED for disable: thermald
+2026-06-24 07:49:32 - FLAGGED for disable: ua-reboot-cmds
+2026-06-24 07:49:32 - FLAGGED for disable: ubuntu-advantage
+2026-06-24 07:49:32 - FLAGGED for disable: udisks2
+2026-06-24 07:49:32 - FLAGGED for disable: unattended-upgrades
+2026-06-24 07:49:32 - FLAGGED for disable: wpa_supplicant
+2026-06-24 07:49:32 - FLAGGED for disable: 56
+2026-06-24 07:49:32 - Service Hardening complete.
+2026-06-24 07:49:32 - Starting Firewall Hardening...
+2026-06-24 07:49:33 - UFW reset complete.
+2026-06-24 07:49:34 - UFW defaults set: Deny Incoming, Allow Outgoing.
+2026-06-24 07:49:34 - Firewall Hardening complete (Pending Enable).
+2026-06-24 07:49:34 - Script execution finished.
+2026-06-24 08:01:10 - Script execution started.
+2026-06-24 08:01:10 - Starting Service Hardening...
+2026-06-24 08:01:11 - FLAGGED for disable: anacron
+2026-06-24 08:01:11 - FLAGGED for disable: apport
+2026-06-24 08:01:11 - FLAGGED for disable: bluetooth
+2026-06-24 08:01:11 - FLAGGED for disable: cloud-config
+2026-06-24 08:01:11 - FLAGGED for disable: cloud-final
+2026-06-24 08:01:11 - FLAGGED for disable: cloud-init-local
+2026-06-24 08:01:11 - FLAGGED for disable: cloud-init-main
+2026-06-24 08:01:11 - FLAGGED for disable: cloud-init-network
+2026-06-24 08:01:11 - FLAGGED for disable: console-setup
+2026-06-24 08:01:11 - FLAGGED for disable: cups-browsed
+2026-06-24 08:01:11 - FLAGGED for disable: cups
+2026-06-24 08:01:11 - FLAGGED for disable: dmesg
+2026-06-24 08:01:11 - FLAGGED for disable: e2scrub_reap
+2026-06-24 08:01:12 - FLAGGED for disable: getty@
+2026-06-24 08:01:12 - FLAGGED for disable: gpu-manager
+2026-06-24 08:01:12 - FLAGGED for disable: grub-initrd-fallback
+2026-06-24 08:01:12 - FLAGGED for disable: grub2-common
+2026-06-24 08:01:12 - FLAGGED for disable: kdump-tools
+2026-06-24 08:01:12 - FLAGGED for disable: keyboard-setup
+2026-06-24 08:01:12 - FLAGGED for disable: ModemManager
+2026-06-24 08:01:12 - FLAGGED for disable: netplan-configure
+2026-06-24 08:01:12 - FLAGGED for disable: networkd-dispatcher
+2026-06-24 08:01:12 - FLAGGED for disable: NetworkManager-dispatcher
+2026-06-24 08:01:12 - FLAGGED for disable: NetworkManager-wait-online
+2026-06-24 08:01:12 - FLAGGED for disable: openvpn
+2026-06-24 08:01:12 - FLAGGED for disable: secureboot-db
+2026-06-24 08:01:12 - FLAGGED for disable: setvtrgb
+2026-06-24 08:01:12 - FLAGGED for disable: snapd.apparmor
+2026-06-24 08:01:12 - FLAGGED for disable: snapd.autoimport
+2026-06-24 08:01:12 - FLAGGED for disable: snapd.core-fixup
+2026-06-24 08:01:12 - FLAGGED for disable: snapd.recovery-chooser-trigger
+2026-06-24 08:01:12 - FLAGGED for disable: snapd.seeded
+2026-06-24 08:01:12 - FLAGGED for disable: snapd.system-shutdown
+2026-06-24 08:01:12 - FLAGGED for disable: ssl-cert
+2026-06-24 08:01:12 - FLAGGED for disable: sssd
+2026-06-24 08:01:12 - FLAGGED for disable: switcheroo-control
+2026-06-24 08:01:12 - FLAGGED for disable: sysstat
+2026-06-24 08:01:12 - FLAGGED for disable: systemd-oomd
+2026-06-24 08:01:12 - FLAGGED for disable: systemd-pstore
+2026-06-24 08:01:12 - FLAGGED for disable: systemd-timesyncd
+2026-06-24 08:01:13 - FLAGGED for disable: ua-reboot-cmds
+2026-06-24 08:01:13 - FLAGGED for disable: ubuntu-advantage
+2026-06-24 08:01:13 - Service Hardening complete.
+2026-06-24 08:01:13 - Starting Firewall Hardening...
+2026-06-24 08:01:13 - UFW reset complete.
+2026-06-24 08:01:13 - UFW defaults set: Deny Incoming, Allow Outgoing.
+2026-06-24 08:01:14 - Firewall Hardening complete (Pending Enable).
+2026-06-24 08:01:14 - Script execution finished.
