@@ -1,0 +1,90 @@
+=============================================================================
+LAB 101: LINUX HARDENING FOR SOC ANALYSTS - INSTRUCTOR ANSWER KEY
+=============================================================================
+Course: Blue Team SOC Foundations
+Module: Automated Log Hardening & Service Reduction
+Date: June 24, 2026
+=============================================================================
+
+SECTION 1: MULTIPLE CHOICE (Single Answer)
+-----------------------------------------------------------------------------
+
+1. Correct Answer: B
+   Explanation: Bash Strict Mode (set -euo pipefail) ensures that if any 
+   command fails (returns non-zero), the script terminates immediately. 
+   This prevents "silent failures" where a script continues executing 
+   despite errors, which could lead to an insecure or broken system state.
+
+2. Correct Answer: A
+   Explanation: The `|| true` construct forces the pipeline to return a 
+   success exit code (0) even if `systemctl` or `awk` encounters an error 
+   or returns no results. Without this, `set -e` would kill the script 
+   instantly upon any minor failure.
+
+3. Correct Answer: C
+   Explanation: Every running service is a potential entry point for an 
+   attacker. `cups` and `bluetooth` open network ports or hardware interfaces 
+   that are unnecessary for a SOC analyst's core duties. Disabling them 
+   removes these potential vulnerabilities (reducing the attack surface).
+
+4. Correct Answer: B
+   Explanation: If you enable the firewall with a "default deny" policy 
+   before explicitly allowing SSH (port 22), you will immediately block 
+   all incoming SSH connections, locking yourself out of the system. 
+   Rules must be added BEFORE enabling the firewall.
+
+-----------------------------------------------------------------------------
+SECTION 2: SELECT ALL THAT APPLY
+-----------------------------------------------------------------------------
+
+5. Correct Answers: B, D, E
+   - B (ssh): Essential for remote administration.
+   - D (rsyslog): Critical for security monitoring and log collection.
+   - E (apparmor): Critical for application-level security enforcement.
+   
+   Incorrect:
+   - A (cups) & C (bluetooth): Non-essential for servers/analyst laptops.
+   - F (telnet): Insecure protocol; should never be allowed/installed.
+
+6. Correct Answers: A, C
+   - A: Audit logs provide a forensic trail of exactly what changes were 
+     made and when, which is vital during incident response.
+   - C: CIS Benchmarks explicitly require logging of configuration changes.
+   
+   Incorrect:
+   - B: Logging to a file does not inherently make scripts faster.
+   - D: Logging is passive; it does not automatically reverse changes.
+
+-----------------------------------------------------------------------------
+SECTION 3: SHORT ANSWER & SCENARIO
+-----------------------------------------------------------------------------
+
+7. Scenario Answer:
+   The script likely encountered a "non-zero exit code" from a command 
+   inside a pipeline (e.g., `systemctl` returning an error or empty list). 
+   Because `set -e` (exit on error) and `set -o pipefail` (fail on pipeline 
+   error) were active, the script terminated immediately without printing 
+   an error message. This is known as a "Silent Failure."
+
+8. Attack Surface Reduction Answer:
+   Attack Surface Reduction is the practice of minimizing the number of 
+   vulnerabilities or entry points available to an attacker. By disabling 
+   `ModemManager` on a workstation that does not use cellular modems, we 
+   remove the software code that handles modem connections. If a vulnerability 
+   were discovered in `ModemManager` tomorrow, our system would not be 
+   affected because the service is not running or installed.
+
+9. Critical Thinking Answer:
+   You would be immediately locked out. Since the default policy is "deny 
+   incoming," enabling the firewall activates that deny rule instantly. 
+   Because no specific rule allowing SSH (port 22) exists yet, the firewall 
+   drops all incoming SSH packets. Recovery would require physical console 
+   access or out-of-band management (IPMI/iDRAC) to correct the rules.
+
+=============================================================================
+GRADING RUBRIC SUGGESTION:
+- Multiple Choice: 4 points each (16 total)
+- Select All: 6 points each (12 total)
+- Short Answer: 8 points each (24 total)
+- Total: 52 Points (Convert to percentage as needed)
+=============================================================================   
