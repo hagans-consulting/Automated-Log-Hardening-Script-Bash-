@@ -49,7 +49,7 @@ harden_services() {
   # This ensures "UNIT" is never processed as a service name
   local all_services=$(systemctl list-unit-files --type=service --state=enabled --no-pager 2>/dev/null | tail -n +2 | awk '{print $1}' | sed 's/.service//' || true)
   
-  echo "DEBUG: Found services: $all_services"
+  # echo "DEBUG: Found services: $all_services"
 
   if [[ -z "$all_services" ]]; then
     log_action "ERROR: Service list is empty. Skipping service hardening."
