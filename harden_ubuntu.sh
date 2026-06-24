@@ -36,36 +36,41 @@ log_action "Script execution started."
 harden_services() {
   log_action "Starting Service Hardening..."
   
-  # Define Allowed Services (Whitelist)
-  # Add services you NEED (e.g., ssh, ufw, cron, networking)
-  local allowed_services=("ssh" "ufw" "cron" "systemd-journald" "networking" "systemd-resolved" "dbus")
+  # EXPANDED Whitelist: Includes essential desktop & security services
+  local allowed_services=(
+    "ssh" "ufw" "cron" "systemd-journald" "networking" 
+    "systemd-resolved" "dbus" "rsyslog" "apparmor" 
+    "NetworkManager" "wpa_supplicant" "avahi-daemon" 
+    "power-profiles-daemon" "thermald" "udisks2" 
+    "accounts-daemon" "gdm" "snapd" "unattended-upgrades"
+  )
   
-  # List all enabled services
-  # FIX: Added '|| true' to prevent script exit if systemctl returns non-zero
-  # FIX: Added '2>/dev/null' to hide warning messages that might confuse parsing
-  local all_services=$(systemctl list-unit-files --type=service --state=enabled --no-pager 2>/dev/null | awk '{print $1}' | sed 's/.service//' || true)
+  # FIX: Skip the header row by using 'tail -n +2'
+  # This ensures "UNIT" is never processed as a service name
+  local all_services=$(systemctl list-unit-files --type=service --state=enabled --no-pager 2>/dev/null | tail -n +2 | awk '{print $1}' | sed 's/.service//' || true)
   
-  # DEBUG LINE: Shows exactly what the script captured
   echo "DEBUG: Found services: $all_services"
 
-  # Safety check: If the list is empty, stop to avoid disabling everything
   if [[ -z "$all_services" ]]; then
     log_action "ERROR: Service list is empty. Skipping service hardening."
     return 1
   fi
 
   for service in $all_services; do
-    # Check if service is in the allowed list
+    # Skip empty lines or numbers if any slip through
+    if [[ ! "$service" =~ ^[a-zA-Z] ]]; then
+      continue
+    fi
+
     if [[ ! " ${allowed_services[@]} " =~ " ${service} " ]]; then
       echo "Found non-essential service: $service"
-      # SAFETY: Command is commented out for the lab. Remove '#' to execute.
       # systemctl disable --now "$service"
       log_action "FLAGGED for disable: $service"
     fi
   done
   
   log_action "Service Hardening complete."
-}
+}   
 
 # ---------------------------------------------------------
 # Function: Harden Firewall (UFW)
