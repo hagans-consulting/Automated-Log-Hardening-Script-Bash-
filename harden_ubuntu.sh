@@ -1,6 +1,6 @@
 #!/bin/bash
 # SOC Lab: Ubuntu Hardening Script
-# Author: [Your Name]
+# Author: Hagans Consulting
 # CIS Benchmark Level: 1
 
 # 1. Strict Mode: Exit on error, unset variable, or pipe failure
